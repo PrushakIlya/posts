@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+
+<?php
+
+define('MAIN_PATH', dirname(__DIR__));
+
+require_once MAIN_PATH . "/vendor/autoload.php";
+
+$container = require_once MAIN_PATH . '/config/services.php';
+
+$kernel = $container->get(\Prushak\Framework\Console\Kernel::class);
+
+$status = $kernel->handle();
+
+echo $status;
+
+exit();

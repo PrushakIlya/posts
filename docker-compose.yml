@@ -1,0 +1,29 @@
+services:
+  php:
+    container_name: php
+    build:
+      context: docker/php
+      dockerfile: Dockerfile
+    environment:
+      PHP_IDE_CONFIG: 'serverName=webSite'
+    volumes:
+      - ./:/var/www/web
+  nginx:
+    container_name: nginx
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./:/var/www/web:cached
+    ports:
+      - 80:80
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.31
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'root'
+    ports:
+      - 3306:3306
+

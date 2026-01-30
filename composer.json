@@ -1,0 +1,25 @@
+{
+    "name": "src/posts",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Ilya Prushak"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/PrushakIlya/framework"
+        }
+    ],
+    "require": {
+        "prushak/framework": "dev-main",
+        "ext-pdo": "*"
+    }
+}

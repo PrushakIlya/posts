@@ -1,0 +1,10 @@
+@use "../variables/colors";
+
+.main {
+  margin: 65px 0;
+
+  .header {
+    background-color: colors.$secondary_bg;
+    padding: 20px 33px;
+  }
+}

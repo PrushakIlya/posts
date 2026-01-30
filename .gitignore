@@ -1,0 +1,6 @@
+vendor/
+.idea/
+.templates_c/
+.templates/
+.cache/
+.DS_Store
