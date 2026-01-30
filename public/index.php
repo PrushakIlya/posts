@@ -13,8 +13,6 @@ define('MAIN_PATH', dirname(__DIR__));
 
 require_once MAIN_PATH . "/vendor/autoload.php";
 
-require_once MAIN_PATH . "/env.php";
-
 $container = require_once MAIN_PATH . "/config/services.php";
 
 $request = Request::createFromGlobals();

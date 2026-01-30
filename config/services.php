@@ -4,7 +4,7 @@ $routes = require_once MAIN_PATH . '/routes/web.php';
 
 $container = new \Prushak\Framework\Container\Container();
 
-$container->add('debug_mode', APP_ENV);
+$container->add('debug_mode', 'dev');
 $container->add('template_path',MAIN_PATH . '/templates');
 $container->add('compile_dir',MAIN_PATH . '/templates_c');
 $container->add('cache_dir',MAIN_PATH . '/cache');

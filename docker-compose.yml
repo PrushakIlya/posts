@@ -17,13 +17,15 @@ services:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
       - ./:/var/www/web:cached
     ports:
-      - 80:80
+      - 80:80 #Need to hand out in variable
   mysql:
     container_name: mysql
     image: mysql:8.0.31
+    volumes:
+      - ./docker/init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'root'
     ports:
-      - 3306:3306
+      - 3306:3306 #Need to hand out in variable
 
