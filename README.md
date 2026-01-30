@@ -7,7 +7,8 @@
     - Run "cd web"
     - Run in the container "composer i"
 4. DB has already been created!
-6. Run to up the table "php bin/console database:migration:migrate --up"
-   Run to drop the table "php bin/console database:migration:migrate --down"
-7. Run to add fake data "php bin/console database:seed --class=CategorySeeder"
+6. Run "docker exec -it php sh"
+   Run "cd web"
+   Run to up the table "php bin/console database:migration:migrate --up"
+   Run to add fake data "php bin/console database:seed --class=CategorySeeder"
    Run to add fake data "php bin/console database:seed --class=PostSeeder"
