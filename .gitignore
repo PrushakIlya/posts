@@ -1,6 +1,6 @@
 vendor/
 .idea/
-.templates_c/
-.templates/
-.cache/
+templates_c/
+cache/
+node_modules/
 .DS_Store
