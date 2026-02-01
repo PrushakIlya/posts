@@ -21,22 +21,29 @@ class PostsController extends AbstractController
             $postsByCategory[$post['category_name'] . '_' . $post['category_id']][] = $post;
         }
 
-        return $this->render("index.tpl", ['postsCategory' => $postsByCategory]);
+        return $this->render("pages/home.tpl", ['postsCategory' => $postsByCategory]);
     }
-    public function posts(int $id): Response
+    public function show(string $id): Response
     {
         $postRepository = new PostRepository();
-        $post = $postRepository->getPostById($id);
-        $samePosts = $postRepository->getSamePosts($post['category_id']);
+        $post = $postRepository->getPostById((int)$id);
 
-        $postRepository->updateCountViewsById($id);
+        $samePosts = [];
 
-        return $this->render("post.tpl", ['post' => $post, 'same_posts' => $samePosts]);
+        if (!empty($post)) {
+            $postService = new PostsService();
+            $samePosts = $postService->getSamePosts($postRepository, $post['category_id']);
+
+            $postRepository->updateCountViewsById((int)$id);
+        }
+
+        return $this->render("pages/posts/show.tpl", ['post' => $post, 'same_posts' => $samePosts]);
     }
 
-    public function postsCategories(int $id, Request $request): Response
+    public function posts(string $id, Request $request): Response
     {
-        $page = (int)$request->getQuery('page');
+        $page = empty((int)$request->getQuery('page')) ? 1 : (int)$request->getQuery('page');
+
         $filter = $request->getQuery('filter');
 
         $postService = new PostsService();
@@ -45,14 +52,20 @@ class PostsController extends AbstractController
 
         $postRepository = new PostRepository();
 
-        [$posts, $count] = $postRepository->getPostByCategoryId(id: $id, page: $page, filter: $filterArr);
+        $countPosts = $postRepository->getPostsCountByCategoryId((int)$id);
 
-        return $this->render("posts.tpl", [
+        $posts = [];
+
+        if (!empty($countPosts)) {
+            $posts = $postRepository->getPostByCategoryId(id: (int)$id, page: $page, filter: $filterArr);
+        }
+
+        return $this->render("pages/categories/posts.tpl", [
             'posts' => $posts,
-            'category_id' => $id,
-            'count' => $count,
+            'category_id' => (int)$id,
+            'count' => $countPosts,
             'page' => $page,
-            'filter' => $filter,
+            'filter' => $filter ?? 'default',
         ]);
     }
 }

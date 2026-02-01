@@ -70,28 +70,22 @@ class PostRepository extends AbstractRepository
             FROM posts
             WHERE category_id = :categoryId
             ORDER BY publication_date DESC
-            LIMIT 3
+            LIMIT 20
             OFFSET 1
         ';
 
         return $this->fetchAll($sql, ['categoryId' => $categoryId]);
     }
 
-    public function getPostsCount(int $id)
+    public function getPostsCountByCategoryId(int $id)
     {
         $sql = 'select count(*) from posts where category_id = :id';
 
         return $this->fetch($sql, ['id' => $id], \PDO::FETCH_COLUMN);
     }
 
-    public function getPostByCategoryId(int $id, int $page = 1, int $limit = 9, object| null $filter = null): array
+    public function getPostByCategoryId(int $id, int $page = 1, int $limit = 9, object $filter = null): array
     {
-        $count = $this->getPostsCount($id);
-
-        if ($count === 0) {
-            return [];
-        }
-
         $sql = '
             SELECT
                 name,
@@ -112,9 +106,7 @@ class PostRepository extends AbstractRepository
 
         $sql .= 'LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit;
 
-        $posts = $this->fetchAll($sql, ['id' => $id]);
-
-        return [$posts, floor($count / $limit) + ($count % $limit ? 1 : 0)];
+        return $this->fetchAll($sql, ['id' => $id]);
     }
 
     public function updateCountViewsById(int $id): void

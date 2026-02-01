@@ -12,8 +12,7 @@ use Prushak\Framework\Http\Request;
 define('MAIN_PATH', dirname(__DIR__));
 
 require_once MAIN_PATH . "/vendor/autoload.php";
-
-require_once MAIN_PATH . "/env.php";
+require_once MAIN_PATH . '/vendor/prushak/framework/bootstrap.php';
 
 $container = require_once MAIN_PATH . "/config/services.php";
 

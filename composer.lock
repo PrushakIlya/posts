@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54511fe54cf5f6f34952f089e29f1406",
+    "content-hash": "2cf1c0ebd6689b6a0eb725954390b8c3",
     "packages": [
         {
             "name": "prushak/framework",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PrushakIlya/framework.git",
-                "reference": "74f2a8d1e2c1593ceea18e0b3a34e2363c865a7c"
+                "reference": "bb5ac08b3738d652e062a00322412b9d6877918a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PrushakIlya/framework/zipball/74f2a8d1e2c1593ceea18e0b3a34e2363c865a7c",
-                "reference": "74f2a8d1e2c1593ceea18e0b3a34e2363c865a7c",
+                "url": "https://api.github.com/repos/PrushakIlya/framework/zipball/bb5ac08b3738d652e062a00322412b9d6877918a",
+                "reference": "bb5ac08b3738d652e062a00322412b9d6877918a",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 "source": "https://github.com/PrushakIlya/framework/tree/main",
                 "issues": "https://github.com/PrushakIlya/framework/issues"
             },
-            "time": "2026-01-30T05:32:25+00:00"
+            "time": "2026-02-01T16:08:11+00:00"
         },
         {
             "name": "smarty/smarty",
@@ -220,6 +220,6 @@
     "platform": {
         "ext-pdo": "*"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }

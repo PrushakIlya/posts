@@ -14,5 +14,5 @@ RUN apk update \
 
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d
 
-WORKDIR /var/www
+WORKDIR /var/www/web
 

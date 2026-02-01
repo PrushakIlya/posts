@@ -44,7 +44,7 @@ class AbstractRepository extends EntityRepository
         return $result;
     }
 
-    protected function execute(string $sql, array $params, int $pdoType = \PDO::FETCH_ASSOC): bool
+    protected function execute(string $sql, array $params): bool
     {
         try {
             $stmt = $this->getConn()->prepare($sql);
